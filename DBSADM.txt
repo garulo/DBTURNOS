@@ -1,0 +1,82 @@
+CREATE DATABASE `sadm_web` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_bin */;
+CREATE TABLE `configuraciones` (
+  `idPortal` varchar(40) COLLATE utf8_bin NOT NULL COMMENT 'Clave primaria',
+  `urlfiles` text COLLATE utf8_bin NOT NULL COMMENT 'ubicación de carpeta contenedora UPLOADED_FILES',
+  `copyright` varchar(200) COLLATE utf8_bin NOT NULL COMMENT 'Firma del Portal',
+  PRIMARY KEY (`idPortal`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `menus_d` (
+  `id` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `valor` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `tipo` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `menu_padre` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `href` varchar(900) CHARACTER SET utf8 NOT NULL,
+  `target` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `activo` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `val1` varchar(2000) CHARACTER SET utf8 NOT NULL,
+  `val2` varchar(2000) CHARACTER SET utf8 NOT NULL,
+  `val3` varchar(2000) CHARACTER SET utf8 NOT NULL,
+  `desc_modif` varchar(2000) CHARACTER SET utf8 NOT NULL,
+  `user_modif` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `f_modif` varchar(30) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `noticias_d` (
+  `uid_Noticia` varchar(40) CHARACTER SET utf8 NOT NULL COMMENT 'UID de la Noticia',
+  `id_Noticia` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `h3_img_noticia` varchar(500) CHARACTER SET utf8 DEFAULT NULL COMMENT 'Url de la imagen',
+  `title_notice_noticia` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Título',
+  `encab_notice` varchar(2000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Encabezado',
+  `cont_notice` longtext COLLATE utf8_bin,
+  `noticia_fecha` varchar(100) COLLATE utf8_bin DEFAULT NULL COMMENT 'Fecha de la Noticia',
+  `fechamodif` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'Fecha de modificación bitácora',
+  `usuariomodif` varchar(50) COLLATE utf8_bin DEFAULT NULL COMMENT 'usuario Modificación bitácora',
+  `coments` varchar(1000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Comentarios',
+  `val1` varchar(2000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Valor Extra 1',
+  `val2` varchar(2000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Valor Extra 2',
+  `val3` varchar(2000) COLLATE utf8_bin DEFAULT NULL COMMENT 'Valor Extra 3',
+  `activo` varchar(5) COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id_Noticia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `paginas_d` (
+  `uid_Pagina` varchar(40) CHARACTER SET utf8 NOT NULL,
+  `id_Pagina` varchar(25) CHARACTER SET utf8 NOT NULL,
+  `nom_pag` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `ref_pag` varchar(200) CHARACTER SET utf8 DEFAULT NULL,
+  `val_pag` text COLLATE utf8_bin,
+  `cont_pag` longtext COLLATE utf8_bin,
+  `target` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
+  `activo` varchar(5) CHARACTER SET utf8 DEFAULT NULL,
+  `path_pag` varchar(2000) CHARACTER SET utf8 DEFAULT NULL,
+  `url_pag` varchar(2000) CHARACTER SET utf8 DEFAULT NULL,
+  `id_pag_html` varchar(2000) CHARACTER SET utf8 DEFAULT NULL,
+  `pagina_desc` varchar(2000) CHARACTER SET utf8 DEFAULT NULL,
+  `val1_pag` text COLLATE utf8_bin,
+  `val2_pag` text COLLATE utf8_bin,
+  `val3_pag` text COLLATE utf8_bin,
+  `val4_pag` text COLLATE utf8_bin,
+  `val5_pag` text COLLATE utf8_bin,
+  PRIMARY KEY (`id_Pagina`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+CREATE TABLE `usuarios` (
+  `idUsuarios` varchar(45) CHARACTER SET utf8 NOT NULL COMMENT 'Identificador de Usuario',
+  `Usuario` varchar(30) CHARACTER SET utf8 NOT NULL COMMENT 'Nombre de usuario',
+  `Password` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `Nombres` varchar(80) CHARACTER SET utf8 NOT NULL COMMENT 'Nombre o nombres del usuario\n',
+  `Apellido_Paterno` varchar(50) CHARACTER SET utf8 NOT NULL COMMENT 'Apellido Paterno del usuario',
+  `Apellido_Materno` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT 'Apellido Materno del Usuario',
+  `RFC` varchar(14) CHARACTER SET utf8 DEFAULT NULL COMMENT 'Registro Federal de Contribuyentes del Usuario',
+  `CURP` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT 'Clave Unica de Registro de Población del Usuario',
+  `idRol` varchar(20) CHARACTER SET utf8 NOT NULL,
+  `activo` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `desc_modif` varchar(1000) CHARACTER SET utf8 DEFAULT NULL,
+  `user_modif` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
+  `f_modif` varchar(60) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`Usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
